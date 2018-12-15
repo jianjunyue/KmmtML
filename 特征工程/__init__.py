@@ -10,7 +10,7 @@ categorical_features=""
 # path= FileUtil.dataKagglePath()
 # print(path)
 
-
+titanicPath=FileUtil.dataKagglePath("titanic/")
 path=FileUtil.dataKagglePath("titanic/")+"train.csv"
 data=pd.read_csv(path)
 path_test=FileUtil.dataKagglePath("titanic/")+"test.csv"
@@ -20,18 +20,30 @@ train=data[predictors]
 y=data["Survived"]
 test=data_test[predictors]
 
+# MeanEnocodeFeature = ["Title","Age"] #声明需要平均数编码的特征
+# ME = MeanEncoder(MeanEnocodeFeature) #声明平均数编码的类
+# trans_train = ME.fit_transform(train,y)#对训练数据集的X和y进行拟合
+# test_trans = ME.transform(test)#对测试集进行编码
+
+
+# 3.1.4. 平均数编码（mean encoding）
 MeanEnocodeFeature = ["Title","Age"] #声明需要平均数编码的特征
 ME = MeanEncoder(MeanEnocodeFeature) #声明平均数编码的类
-trans_train = ME.fit_transform(train,y)#对训练数据集的X和y进行拟合
-test_trans = ME.transform(test)#对测试集进行编码
+train_mean_encoding = ME.fit_transform(train,y)#对训练数据集的X和y进行拟合
+test_mean_encoding = ME.transform(test)#对测试集进行编码
 
-# print("----------------trans_train-----------------")
+train_mean_encoding["Survived"]=data["Survived"]
+test_mean_encoding["PassengerId"]=data_test["PassengerId"]
+train_mean_encoding.to_csv(titanicPath+'fe/train_mean_encoding.csv',index=None)
+test_mean_encoding.to_csv(titanicPath+'fe/test_mean_encoding.csv',index=None)
+
+print("----------------trans_train-----------------")
 # print(trans_train)
 # print("----------------test_trans-----------------")
 # print(test_trans)
 
-print(len(train.columns))
-pca = PCA(train.fillna(0))
-X_reduce_feature = pca.reduce_dimension()
-print("----------------X_reduce_feature-----------------")
-print(X_reduce_feature)
+# print(len(train.columns))
+# pca = PCA(train.fillna(0))
+# X_reduce_feature = pca.reduce_dimension()
+# print("----------------X_reduce_feature-----------------")
+# print(X_reduce_feature)
