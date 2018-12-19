@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn import preprocessing
+from BuildFeature.BuildFeatureBase import BuildFeatureBase
 
 #使用sklearn做单机特征工程
 #https://www.cnblogs.com/jasonfreak/p/5448385.html
@@ -22,6 +23,7 @@ lb = preprocessing.LabelBinarizer()
 # gender 改为 0-1 数值
 # df["gender"]= lb.fit_transform(df['gender'])
 pclass_dummies_titanic  = pd.get_dummies(df['gender'])
+print("-----------pclass_dummies_titanic---------")
 occ_cols = ['gender_' +  columns_name for columns_name in pclass_dummies_titanic.columns]
 pclass_dummies_titanic.rename(columns=rename_columns('gender_',pclass_dummies_titanic.columns), inplace = True)
 # print(type(pclass_dummies_titanic.columns) )
@@ -30,8 +32,12 @@ print(pclass_dummies_titanic)
 # print(rename_columns('gender_',pclass_dummies_titanic.columns))
 # print(type({'A':'a', 'B':'b', 'C':'c'}))
 print("------------------------")
-df = df.join(pclass_dummies_titanic)
-print(df)
+df1 = df.join(pclass_dummies_titanic)
+print(df1)
 #
 
-
+df_one_hot_encoder=BuildFeatureBase.one_hot_encoder(df,"gender")
+print("------one_hot_encoder------------")
+print(df_one_hot_encoder)
+df2 = df.join(df_one_hot_encoder)
+print(df1)

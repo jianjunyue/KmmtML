@@ -1,6 +1,7 @@
 # 调整数据每一行矢量距离为1
 from pandas import read_csv
 from numpy import set_printoptions
+from BuildFeature.BuildFeatureBase import BuildFeatureBase
 
 from sklearn.preprocessing import Normalizer
 import numpy as np
@@ -16,3 +17,8 @@ rescaledX = scaler.transform(listdata)
 # 设定数据的打印格式
 # set_printoptions(precision=3)
 print(rescaledX)
+
+
+print("--------------BuildFeatureBase-----------------")
+temp=BuildFeatureBase.normalizer(listdata)
+print(temp)

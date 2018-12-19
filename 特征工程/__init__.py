@@ -5,6 +5,8 @@ from Algorithm.MeanEncoder import MeanEncoder
 from Utils.FileUtil import FileUtil
 from Algorithm.PCA import PCA
 
+from sklearn2pmml import sklearn2pmml
+
 categorical_features=""
 # aa=MeanEncoder(categorical_features)
 # path= FileUtil.dataKagglePath()
@@ -47,3 +49,12 @@ print("----------------trans_train-----------------")
 # X_reduce_feature = pca.reduce_dimension()
 # print("----------------X_reduce_feature-----------------")
 # print(X_reduce_feature)
+
+print("-----------特征哈希编码方案------------")
+# import pandas as pd
+# from category_encoders.hashing import HashingEncoder
+#
+# df_X = pd.DataFrame([1,2,3,4,1,2,4,5,8,7,66,2,24,5,4,1,2,111,1,31,3,23,13,24],columns=list("A"))
+#
+# he = HashingEncoder(cols=["A"],return_df=True)
+# df_X = he.fit_transform(df_X)

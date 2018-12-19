@@ -3,6 +3,7 @@ from pandas import read_csv
 from numpy import set_printoptions
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
+from BuildFeature.BuildFeatureBase import BuildFeatureBase
 # 导入数据
 
 print("--------以列为单位处理数据，列的转化值=列的实际值/(每列的最大值-每列的最少值)----------------------------")
@@ -20,9 +21,19 @@ print(data_rescaledX)
 
 print("-------------------------------")
 
-listdata=np.array([[1],[3],[4]])
+listdata=np.array([[1],[3],[8]])
 print(listdata)
 data_rescaledX = data_scaler.fit_transform(listdata)
 # 设定数据的打印格式
 # set_printoptions(precision=3)
 print(data_rescaledX)
+
+
+print("--------------transform-----------------")
+list=np.array([[2],[3],[30]])
+y=data_scaler.transform(list)
+print(y)
+
+print("--------------BuildFeatureBase-----------------")
+temp=BuildFeatureBase.minMaxScaler(listdata,list)
+print(temp)

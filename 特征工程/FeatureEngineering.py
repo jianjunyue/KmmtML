@@ -3,6 +3,7 @@ from Utils.FileUtil import FileUtil
 from Utils.Util import Util
 from Algorithm.MeanEncoder import MeanEncoder
 from sklearn import preprocessing
+from sklearn2pmml import sklearn2pmml
 import numpy as np
 from sklearn.ensemble import GradientBoostingClassifier  #GBM algorithm
 from sklearn.ensemble import RandomForestClassifier
