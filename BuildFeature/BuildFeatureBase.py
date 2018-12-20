@@ -1,5 +1,5 @@
 import pandas as pd
-from BuildFeature.Util import Util
+from KmmtML.BuildFeature.Util import Util
 from sklearn import preprocessing
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
@@ -79,12 +79,14 @@ class BuildFeatureBase:
         数值编码
         对于有序特征，用数值编码（可区分特征大小关系）；对于无序特征，用独热编码
         >>> labelencoder_df=BuildFeatureBase.labelencoder_df(df,"gender",labelencoder_mapping)
-        >>> labelencoder_df=BuildFeatureBase.labelencoder_df(df,"gender")
+
+        >>> labelencoder_df=BuildFeatureBase.labelencoder_df(data,"target")
+        >>> data["target"]=labelencoder_df["target"]
         {'data': 0, 'group': 1, 'mall': 2, 'room': 3}
         :param name:
         :return:
         """
-        df = pd.DataFrame()
+        df = pd.DataFrame(index=None)
         if mapping==None:
             mapping = BuildFeatureBase.labelencoder_mapping(data, column_name)
         df[column_name]=data[column_name].map(mapping)

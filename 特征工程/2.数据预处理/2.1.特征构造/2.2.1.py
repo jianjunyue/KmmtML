@@ -1,4 +1,4 @@
-from Data.titanic.TitanicData import TitanicData
+from KmmtML.Data.titanic.TitanicData import TitanicData
 from Utils.Util import Util
 from BuildFeature.BuildBase import BuildBase
 from scipy import stats

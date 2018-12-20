@@ -12,15 +12,17 @@ class FEHelper:
             name_dict[name] =pre_name+link_char+ str(name)
         return name_dict
 
-    def data_info_print(data,data_test,keyName):
+    def data_info(data,keyName):
         print("-----------------------------------data:"+keyName+"-------------------------------------------")
+        print(data[keyName].info())# ?
         print(data[keyName].describe())
         print(data[keyName].unique())
         print(data[keyName].value_counts())
         print(data[keyName].isnull().sum())
         print()
-        print("-----------------------------------data_test:"+keyName+"-------------------------------------------")
-        print(data_test[keyName].describe())
-        print(data_test[keyName].unique())
-        print(data_test[keyName].value_counts())
-        print(data_test[keyName].isnull().sum())
+
+    def data_info(data):
+        print(data.info())
+        print(data.describe())
+
+

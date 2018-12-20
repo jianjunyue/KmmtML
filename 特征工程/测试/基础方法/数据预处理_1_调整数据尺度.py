@@ -3,7 +3,7 @@ from pandas import read_csv
 from numpy import set_printoptions
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-from BuildFeature.BuildFeatureBase import BuildFeatureBase
+from KmmtML.BuildFeature.BuildFeatureBase import BuildFeatureBase
 # 导入数据
 
 print("--------以列为单位处理数据，列的转化值=列的实际值/(每列的最大值-每列的最少值)----------------------------")
