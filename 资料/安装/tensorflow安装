@@ -1,0 +1,5 @@
+pip install tf-nightly-2.0-preview
+
+卸载tensorflow:pip uninstall tensorflow
+
+pip3 install keras

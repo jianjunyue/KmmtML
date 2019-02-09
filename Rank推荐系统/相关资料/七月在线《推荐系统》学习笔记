@@ -1,0 +1,21 @@
+
+
+
+第6课 排序算法&深度学习模型（一）
+
+
+搜索+Deep Rank
+• MS - DSSM (CIKM’13)
+• MS - DSSM CNN (CIKM’14)
+• MS - Deep Crossing (KDD’16)
+
+推荐+Deep Rank
+• WDL(DLRS 2016)
+• Youtube DNN (Recsys’16)
+• FNN(ECIR’16)
+• PNN(ICDM2016)
+• FFM (RecSys ’16)
+• NFM(SIGIR’17)
+• DeepFM(2017)
+• AttentionFM(IJCAI’17)
+• DCN(ADKDD'17)

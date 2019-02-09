@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 #coding:utf8
 import pandas as pd
-from Algorithm.MeanEncoder import MeanEncoder
-from Utils.FileUtil import FileUtil
-from Algorithm.PCA import PCA
+from KmmtML.Algorithm.MeanEncoder import MeanEncoder
+from KmmtML.Utils.FileUtil import FileUtil
+from KmmtML.Algorithm.PCA import PCA
 
 from sklearn2pmml import sklearn2pmml
 

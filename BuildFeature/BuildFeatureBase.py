@@ -6,6 +6,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import Binarizer
 from sklearn.preprocessing import Normalizer
 
+#参数多列数据则为DataFrame，单列数据则为Series
+#返回多列数据则为DataFrame，单列数据则为Series ？
 class BuildFeatureBase:
     def __init__(self):
         return
@@ -142,3 +144,39 @@ class BuildFeatureBase:
         # 数据转换
         data = scaler.transform(fit_data)
         return data
+
+
+    #-----离散化 --> 连续数据离散-等宽离散，等频离散，聚类离散。  把数据按不同区间划分（等宽划分或等频划分），聚类编码/按层次进行编码 ----------#
+    def bin_point(series,level):
+        lam=lambda x: int(x/level)
+        temp= series.apply(lam)
+        return temp
+
+    def fe_quantile(series,quantile=[0.25, 0.5, 0.75]):
+        """
+        分位数分箱计数
+        quantile=[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]
+        :return:
+        0.25    22.0
+        0.50    28.0
+        0.75    35.0
+        """
+        temp=series.quantile(quantile)
+        return temp
+
+    def bin_quantile(series,quantile=[0.25, 0.5, 0.75]):
+        """
+        把值转换为指定分位数分箱计数
+        quantile=[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]
+        :param quantile:
+        :return:
+        """
+        temp = series.quantile(quantile)
+        def funx(x):
+            for index,value in zip(temp.index,temp.values):
+                if x<value:
+                    return index
+        lambda1=lambda x:funx(x)
+        temp= series.apply(lambda1)
+        return temp
+
