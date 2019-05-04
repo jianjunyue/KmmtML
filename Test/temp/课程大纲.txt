@@ -1,0 +1,22 @@
+Embedding Numerous Features [嵌入大量的特徵]
+-- Linear Support Vector Machine [線性支持向量機]
+-- Dual Support Vector Machine [對偶支持向量機]
+-- Kernel Support Vector Machine [核型支持向量機]
+-- Soft-Margin Support Vector Machine [軟式支持向量機]
+-- Kernel Logistic Regression [核型羅吉斯迴歸]
+-- Support Vector Regression [支持向量迴歸]
+
+Combining Predictive Features [融合預測性的特徵]
+-- Bootstrap Aggregation [自助聚合法]
+-- Adaptive Boosting [漸次提昇法]
+-- Decision Tree [決策樹]
+-- Random Forest [隨機森林]
+-- Gradient Boosted Decision Tree [梯度提昇決策樹]
+
+Distilling Hidden Features [萃取隱藏的特徵]
+-- Neural Network [類神經網路]
+-- Deep Learning [深度學習]
+-- Radial Basis Function Network [逕向基函數網路] 
+-- Matrix Factorization [矩陣分解]
+
+Summary [總結]
