@@ -21,17 +21,24 @@ print("------------------ad_static_feature-------------------")
 print(ad_static_feature.head())
 
 # 用户特征属性文件（user_data）
-# user_data = pd.read_csv(path+"user_data", sep='\t',header=None,low_memory=False,names = ["user_id","age","gender","area","status","education","consuptionAbility","device","work","connectionType","behavior"])
-# print("------------------user_data-------------------")
-# print(user_data.head())
+user_data = pd.read_csv(path+"user_data_sample", sep='\t',header=None,low_memory=False,names = ["user_id","age","gender","area","status","education","consuptionAbility","device","work","connectionType","behavior"])
+print("------------------user_data-------------------")
+print(user_data.head())
 
 #
 # sql="select id,log_time,ad_place_id,totalExposureLog.user_id,totalExposureLog.ad_id,ad_size_enum,ad_price_bid,ad_pctr,ad_quality_ecpm,ad_totalEcpm,age,gender,area,status,education,education,consuptionAbility,device,work,connectionType,behavior,ad_operation_time,ad_operation_type,ad_edit_type,ad_value,ad_create_time,ad_account_id,ad_promote_goods_id,ad_promote_goods_type,ad_industry_id,ad_size  from totalExposureLog left join ad_static_feature on totalExposureLog.ad_id=ad_static_feature.ad_id left join ad_operation on totalExposureLog.ad_id=ad_operation.ad_id left join user_data on totalExposureLog.user_id=user_data.user_id"
+#
+# sql="select id,log_time,ad_place_id,totalExposureLog.user_id,totalExposureLog.ad_id,ad_size_enum,ad_price_bid,ad_pctr,ad_quality_ecpm,ad_totalEcpm,ad_operation_time,ad_operation_type,ad_edit_type,ad_value,ad_create_time,ad_account_id,ad_promote_goods_id,ad_promote_goods_type,ad_industry_id,ad_size  from totalExposureLog left join ad_static_feature on totalExposureLog.ad_id=ad_static_feature.ad_id left join ad_operation on totalExposureLog.ad_id=ad_operation.ad_id"
 
-sql="select id,log_time,ad_place_id,totalExposureLog.user_id,totalExposureLog.ad_id,ad_size_enum,ad_price_bid,ad_pctr,ad_quality_ecpm,ad_totalEcpm,ad_operation_time,ad_operation_type,ad_edit_type,ad_value,ad_create_time,ad_account_id,ad_promote_goods_id,ad_promote_goods_type,ad_industry_id,ad_size  from totalExposureLog left join ad_static_feature on totalExposureLog.ad_id=ad_static_feature.ad_id left join ad_operation on totalExposureLog.ad_id=ad_operation.ad_id"
+sql="select id,log_time,ad_place_id,totalExposureLog.user_id,totalExposureLog.ad_id,ad_size_enum,ad_price_bid,ad_pctr,ad_quality_ecpm,ad_totalEcpm,ad_create_time,ad_account_id,ad_promote_goods_id,ad_promote_goods_type,ad_industry_id,ad_size  from totalExposureLog left join ad_static_feature on totalExposureLog.ad_id=ad_static_feature.ad_id "
+print("------------------totalExposureLog_ad_static_feature-------------------")
+totalExposureLog_ad_static_feature = pysqldf(sql)
+print(totalExposureLog_ad_static_feature.head())
+
+sql="select id,log_time,ad_place_id,totalExposureLog_ad_static_feature.user_id,totalExposureLog_ad_static_feature.ad_id,ad_size_enum,ad_price_bid,ad_pctr,ad_quality_ecpm,ad_totalEcpm,ad_create_time,ad_account_id,ad_promote_goods_id,ad_promote_goods_type,ad_industry_id,ad_size,ad_operation_time,ad_operation_type,ad_edit_type,ad_value from totalExposureLog_ad_static_feature left join ad_operation on totalExposureLog_ad_static_feature.ad_id=ad_operation.ad_id "
+
 print("------------------table_temp-------------------")
 table_temp = pysqldf(sql)
-print(table_temp.head())
-
+print(totalExposureLog_ad_static_feature.head())
 
 table_temp.to_csv(path+"temp/log_left_join_ad_info.csv",index=False)
